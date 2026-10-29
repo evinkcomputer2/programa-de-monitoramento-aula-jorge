@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081522">
+  <title>Sala Inteligente | Painel</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio">
+        <span class="logo">SI</span>
+        <span>
+          <b>Sala Inteligente</b>
+          <small>CONTROLE DO AMBIENTE</small>
+        </span>
+      </a>
+
+      <p class="navlabel">PAINEL PRINCIPAL</p>
+      <nav>
+        <button class="nav active" data-target="inicio">▦ Visão geral</button>
+        <button class="nav" data-target="sensores">◉ Sensores</button>
+        <button class="nav" data-target="equipamentos">⌘ Equipamentos</button>
+        <button class="nav" data-target="automacao">✧ Automação</button>
+        <button class="nav" data-target="historico">◷ Histórico</button>
+      </nav>
+
+      <div class="sidefoot">
+        <i></i> <b>Painel funcionando</b>
+        <p>Modo demonstração<br>Leituras simuladas</p>
+        <small>PROJETO ESCOLAR · V 1.0</small>
+      </div>
+    </aside>
+
+    <main id="inicio">
+      <header class="top">
+        <div>
+          <p class="eyebrow">MONITORAMENTO DO AMBIENTE</p>
+          <h1>Sala inteligente</h1>
+          <p class="sub">Conforto, economia e tecnologia em um só lugar.</p>
+        </div>
+        <div class="actions">
+          <span class="pill"><i></i>Painel ativo</span>
+          <button id="auto" class="primary" aria-pressed="true">
+            ✦ Automação ligada
+          </button>
+        </div>
+      </header>
+
+      <div class="sectionhead">
+        <div>
+          <h2>Resumo do ambiente</h2>
+          <p>Indicadores principais da sala</p>
+        </div>
+        <span class="note">● Dados de demonstração</span>
+      </div>
+
+      <section class="metrics" id="sensores">
+        <article class="metric">
+          <div class="mtop"><span>Pessoas detectadas</span><em>♙</em></div>
+          <strong class="value"><span id="people">12</span> <small>pessoas</small></strong>
+          <p id="peopleStatus" class="good">● Dentro da capacidade</p>
+        </article>
+
+        <article class="metric">
+          <div class="mtop"><span>Temperatura</span><em>♨</em></div>
+          <strong class="value"><span id="temp">23,5</span><small> °C</small></strong>
+          <p>Faixa de referência: 22–25 °C</p>
+        </article>
+
+        <article class="metric">
+          <div class="mtop"><span>Umidade do ar</span><em>♧</em></div>
+          <strong class="value"><span id="humidity">54</span><small> %</small></strong>
+          <p id="humidityStatus" class="good">● Nível confortável</p>
+        </article>
+
+        <article class="metric">
+          <div class="mtop"><span>Qualidade do ar</span><em>✺</em></div>
+          <strong class="value" id="air">Boa</strong>
+          <p>● Indicador ilustrativo</p>
+        </article>
+      </section>
+
+      <section class="middle">
+        <article class="panel">
+          <div class="phead">
+            <div>
+              <h3>Condições do ambiente</h3>
+              <p>Variação simulada ao longo do dia</p>
+            </div>
+            <div class="tabs">
+              <button class="tab active" data-chart="temp">Temperatura</button>
+              <button class="tab" data-chart="humidity">Umidade</button>
+            </div>
+          </div>
+          <div class="chartwrap">
+            <svg id="chart" viewBox="0 0 600 230"
+                 role="img" aria-label="Gráfico dos sensores"></svg>
+          </div>
+          <div class="legend">
+            <span><i id="legendDot"></i><span id="legendText">Temperatura (°C)</span></span>
+            <span>Atualiza automaticamente</span>
+          </div>
+        </article>
+
+        <article class="panel" id="equipamentos">
+          <div class="phead">
+            <div>
+              <h3>Equipamentos conectados</h3>
+              <p>Controle demonstrativo</p>
+            </div>
+            <span class="note">3 dispositivos</span>
+          </div>
+
+          <div class="room">
+            <span class="roomicon">⌂</span>
+            <span>
+              <b>Modo presença</b>
+              <small id="presence">Pessoas detectadas na sala</small>
+            </span>
+            <strong id="presenceState">ATIVO</strong>
+          </div>
+
+          <div class="devices">
+            <div class="device">
+              <em>❄</em>
+              <span>
+                <b>Ar-condicionado</b>
+                <small id="acText">Ligado · ajuste ilustrativo em 23 °C</small>
+              </span>
+              <button class="toggle on" data-device="ac"
+                      aria-label="Alternar ar-condicionado"
+                      aria-pressed="true"></button>
+            </div>
+
+            <div class="device">
+              <em>☼</em>
+              <span>
+                <b>Iluminação</b>
+                <small id="lightText">Ligada · luz confortável</small>
+              </span>
+              <button class="toggle on" data-device="light"
+                      aria-label="Alternar iluminação"
+                      aria-pressed="true"></button>
+            </div>
+
+            <div class="device">
+              <em>▣</em>
+              <span>
+                <b>Projetor</b>
+                <small id="projectorText">Ligado · apresentação pronta</small>
+              </span>
+              <button class="toggle on" data-device="projector"
+                      aria-label="Alternar projetor"
+                      aria-pressed="true"></button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="lower">
+        <article class="panel">
+          <div class="phead">
+            <div>
+              <h3>Ocupação da sala</h3>
+              <p>Simulação de detecção de presença</p>
+            </div>
+            <span class="note">Limite: 30 pessoas</span>
+          </div>
+
+          <div class="occupancy">
+            <div class="donut" id="donut">
+              <div>
+                <strong id="donutNum">12</strong>
+                <small>de 30 pessoas</small>
+              </div>
+            </div>
+
+            <div class="occinfo">
+              <strong id="percent">40% ocupado</strong>
+              <p>
+                Com sensores reais, o sistema poderá adaptar os equipamentos
+                conforme a presença detectada.
+              </p>
+              <div class="progress"><span id="progress"></span></div>
+              <div class="range">
+                <span>0 pessoas</span>
+                <span>Capacidade máxima</span>
+              </div>
+              <div class="simcontrols">
+                <button id="out">− Saiu uma pessoa</button>
+                <button id="in">+ Entrou uma pessoa</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" id="historico">
+          <div class="phead">
+            <div>
+              <h3>Atividade recente</h3>
+              <p>Ações registradas pelo painel</p>
+            </div>
+            <span class="note">Últimos eventos</span>
+          </div>
+
+          <div id="activity" class="activity">
+            <div class="event">
+              <em>♙</em>
+              <span><b>Presença detectada</b><small>12 pessoas na sala (simulado).</small></span>
+              <time>Agora</time>
+            </div>
+            <div class="event">
+              <em>❄</em>
+              <span><b>Climatização ativa</b><small>Estado demonstrativo do equipamento.</small></span>
+              <time>Agora</time>
+            </div>
+            <div class="event">
+              <em>✧</em>
+              <span><b>Sistema iniciado</b><small>Painel pronto para demonstração.</small></span>
+              <time>Agora</time>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel automation" id="automacao">
+        <h3>Como a automação deve funcionar</h3>
+        <p>Quando os sensores e controladores físicos estiverem conectados, as regras poderão ser:</p>
+        <div class="rules">
+          <div>
+            <b>01 · Detectar presença</b>
+            <p>O sensor identifica se há pessoas na sala.</p>
+          </div>
+          <div>
+            <b>02 · Acionar equipamentos</b>
+            <p>Com presença, liga luzes e climatização conforme as regras configuradas.</p>
+          </div>
+          <div>
+            <b>03 · Economizar energia</b>
+            <p>Sem presença pelo tempo definido, desliga dispositivos compatíveis.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        SALA INTELIGENTE · Projeto escolar · Hardware ainda não conectado
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
